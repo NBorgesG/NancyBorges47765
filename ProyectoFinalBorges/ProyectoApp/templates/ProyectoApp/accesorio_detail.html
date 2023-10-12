@@ -1,0 +1,26 @@
+{% extends "ProyectoApp/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Lista de Accesorios
+{% endblock %}
+
+{% block comentario%} 
+    <div class="container border rounded py-3 px-3">
+        <p>{{accesorio.nombre}}</p>
+        {% if accesorio.imagen %}
+        <img src="{{accesorio.imagen.url}}" alt="" style="max-width: 300px;">
+        {% endif %}
+        
+        <p>Precio : € {{accesorio.precio}}</p>
+        <p>Color : {{accesorio.color}}</p>
+        <p>Reseña : 
+            {{accesorio.descripcion}}</p>
+        <p>Autor :  {{accesorio.autor}} </p>
+
+        <a href="{% url 'ListaAccesorios' %}">Regresar</a>
+    </div>
+    
+{% endblock %}
+

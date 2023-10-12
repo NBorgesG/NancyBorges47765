@@ -1,0 +1,42 @@
+{% extends "ProyectoApp/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+   <h1 class="text-white">Reseñas de productos de belleza</h1>
+   <br><br><br>
+   <p class="text-white my-3">{{mensaje}}</p>
+
+{% endblock %}
+
+
+{% block comentario%} <p class="pb-3 align-items-center justify-content-center text-center">Busqueda por nombre de maquillaje:</p>   {% endblock %}
+{%block busqueda %}
+<div class="align-items-center justify-content-center text-center">
+    <form action="/ProyectoApp/resultadosBusqueda/" method="GET">
+        <input type="text" name="nombre" id="nombre">
+
+        <input type="submit" value="Buscar">
+    </form>
+</div>
+    
+            
+            <div class="align-items-center justify-content-center text-center">
+                <p class="py-3">Resultados de la busqueda: {{nombre}}</p>
+                <div class="">
+                {% for maquillaje in listaMaquillajes %}
+                    <p>Nombre: {{maquillaje.nombre}}</p>
+                    {% if maquillaje.imagen %}
+                        <img src="{{maquillaje.imagen.url}}" alt="imgMaquillaje">
+                    {% endif %}
+                    <p>Color: {{maquillaje.color}}</p>
+                    <p>Precio: {{maquillaje.precio}}</p>
+                    <p>Reseña : {{maquilaje.descripcion}}</p>
+                </div>
+            </div>
+    
+
+    {% endfor%}
+
+{% endblock %}
+

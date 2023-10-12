@@ -1,0 +1,25 @@
+{% extends "ProyectoApp/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Reseñas de Cremas Corporales
+{% endblock %}
+
+{% block comentario%} 
+    <div class="container border rounded py-3 px-3">
+        <p>{{cremascorporales.nombre}}</p>
+        {% if cremascorporales.imagen %}
+        <img src="{{cremascorporales.imagen.url}}" alt="" style="max-width: 300px;">
+        {% endif %}
+        
+        <p>Precio : € {{cremascorporales.precio}}</p>
+        <p>Reseña : {{cremascorporales.descripcion}}</p>
+        <p>Autor :  {{cremascorporales.autor}} </p>
+
+        <a href="{% url 'ListaCremasCorporales' %}">Regresar</a>
+
+    </div>
+    
+{% endblock %}
+

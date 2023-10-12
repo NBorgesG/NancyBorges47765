@@ -1,0 +1,20 @@
+{% extends "ProyectoApp/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Lista de Accesorios
+{% endblock %}
+
+{% block comentario%} 
+
+<form action="" method="POST" enctype= "multipart/form-data"> {% csrf_token %}
+    <table>
+        {{form.as_p}}
+    </table>
+    <input type="submit" value="Guardar Datos">
+    
+</form>
+    
+{% endblock %}
+

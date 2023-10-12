@@ -1,0 +1,41 @@
+{% extends "ProyectoApp/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Reseñas de Accesorios
+{% endblock %}
+
+{% block comentario%} 
+<div class="text-black">
+    <h5>Listado de Reseñas de Accesorios</h5>
+    <hr>  
+    {% for accesorio in object_list %}
+     
+        <p>Nombre: {{accesorio.nombre}}</p>
+        
+        <button class="btn btn-light my-3"> 
+            <a href="{% url 'DetalleAccesorio' accesorio.id %}">Ver post</a>
+        </button>
+        
+        {% if request.user.is_authenticated%}
+            <button class="btn btn-light my-3">
+                <a href="{% url 'EditarAccesorio' accesorio.id %}">Editar post</a>
+            </button>
+
+            <button class="btn btn-light my-3"> 
+                <a href="{% url 'EliminarAccesorio' accesorio.id %}">Borrar post</a>
+            </button>
+        
+        {% endif %}
+        <hr>  
+    {% endfor %}  
+
+    <br>
+    {% if request.user.is_authenticated %}
+        <button class="btn btn-light"><a href="{% url 'CrearAccesorio' %}">Crear nueva reseña sobre Accesorios</a></button>
+        
+    {% endif %}
+</div>
+{% endblock %}
+

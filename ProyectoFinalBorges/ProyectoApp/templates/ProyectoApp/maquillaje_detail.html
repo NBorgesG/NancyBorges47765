@@ -1,0 +1,24 @@
+{% extends "ProyectoApp/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Lista de Maquillajes
+{% endblock %}
+
+{% block comentario%} 
+    <div class="container border rounded py-3 px-3">
+        <p class="py-2">{{maquillaje.nombre}}</p>
+        {% if maquillaje.imagen %}
+            <img src="{{maquillaje.imagen.url}}" alt="" style="max-width: 300px;">
+        {% endif %}
+        
+        <p class="pt-3 pb-2">Precio : € {{maquillaje.precio}}</p>
+        <p class="py-2">Color : {{maquillaje.color}}</p>
+        <p class="py-2">Reseña : </p>
+        <p>{{maquillaje.descripcion}}</p>
+
+        <a href="{% url 'ListaMaquillajes' %}">Regresar</a>
+    </div>
+{% endblock %}
+

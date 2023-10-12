@@ -1,0 +1,41 @@
+{% extends "ProyectoApp/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Reseñas de Maquillajes
+{% endblock %}
+
+{% block comentario%} 
+<h5>Listado de Reseñas de Maquillaje</h5>
+    <hr>
+    
+    {% for maquillaje in object_list %}
+
+        <p class="pt-3">Nombre: {{maquillaje.nombre}}</p>
+        
+        <button class="btn btn-light "> 
+            <a  href="{% url 'DetalleMaquillaje' maquillaje.id %}">Ver post completo</a>
+        </button>
+        
+        {% if request.user.is_authenticated %}
+            <button class="btn btn-light ">
+                <a href="{% url 'EditarMaquillaje' maquillaje.id %}">Editar post</a>
+            </button>
+
+            <button class="btn btn-light "> 
+                <a href="{% url 'EliminarMaquillaje' maquillaje.id %}">Borrar post</a>
+            </button>
+        
+        {% endif %}
+        <hr>    
+    {% endfor %}  
+
+    <br>
+    {% if request.user.is_authenticated %}
+        <button class="btn btn-light "> <a href="{% url 'CrearMaquillaje' %}">Crear nueva reseña sobre maquillaje</a></button>
+        
+    {% endif %}
+    
+{% endblock %}
+

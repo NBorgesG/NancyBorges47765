@@ -1,0 +1,24 @@
+{% extends "ProyectoApp/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Lista de Cremas Faciales
+{% endblock %}
+
+{% block comentario%} 
+    <div class="container border rounded py-3 px-3">
+        <p>{{cremasfaciales.nombre}}</p>
+        {% if cremasfaciales.imagen %}
+        <img src="{{cremasfaciales.imagen.url}}" alt="" style="max-width: 300px;">
+        {% endif %}
+        
+        <p>Precio : € {{cremasfaciales.precio}}</p>
+        <p>Reseña : {{cremasfaciales.descripcion}}</p>
+        <p>Autor :  {{cremasfaciales.autor}} </p>
+
+        <a href="{% url 'ListaCremasFaciales' %}">Regresar</a>
+    </div>
+    
+{% endblock %}
+

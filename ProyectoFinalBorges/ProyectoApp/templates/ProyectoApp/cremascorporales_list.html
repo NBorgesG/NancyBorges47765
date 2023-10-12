@@ -1,0 +1,39 @@
+{% extends "ProyectoApp/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Reseñas de Cremas Corporales
+{% endblock %}
+
+{% block comentario%} 
+    <h5>Listado de Reseñas de Cremas Corporales</h5>
+    <hr>        
+    {% for cremasCorporales in object_list %}
+
+        <p>Nombre:{{cremasCorporales.nombre}}</p>
+        
+        <button class="btn btn-light my-3"> 
+            <a href="{% url 'DetalleCremaCorporal' cremasCorporales.id %}">Ver post</a>
+        </button>
+        
+        {% if request.user.is_authenticated%}
+            <button class="btn btn-light my-3">
+                <a href="{% url 'EditarCremaCorporal' cremasCorporales.id %}">Editar post</a>
+            </button>
+
+            <button class="btn btn-light my-3"> 
+                <a href="{% url 'EliminarCremaCorporal' cremasCorporales.id %}">Borrar post</a>
+            </button>
+        
+        {% endif %}
+        <hr>  
+    {% endfor %}  
+
+    <br>
+    {% if request.user.is_authenticated %}
+        <button class="btn btn-light my-3"> <a href="{% url 'CrearCremaCorporal' %}">Crear nueva reseña sobre Cremas Corporales</a></button>
+        
+    {% endif %}
+    
+{% endblock %}

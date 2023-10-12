@@ -1,0 +1,19 @@
+{% extends "ProyectoApp/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+    Edita el usuario
+{% endblock %}
+
+{% block comentario%} 
+
+<form action="" method="POST"> {% csrf_token %}
+   {{Formulario.as_p}}
+
+    <button type="submit">Editar Usuario</button>
+    
+</form>
+    
+{% endblock %}
+
